@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Azure.Identity;
+using Hospital.Models;
 using Hospital.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -48,14 +49,14 @@ namespace Hospital.Utilities
 
                 _userManager.CreateAsync(new ApplicationUser
                 {
-                    Username = "Durjoy",
+                    UserName = "Durjoy",
                     Email = "durjoy6405@gmail.com"
                 }, "durjoy6405").GetAwaiter().GetResult();
 
                 var Appuser = _context.ApplicationUsers.FirstOrDefault(x=>x.Email == "durjoy6405@gmail.com");
                 if (Appuser != null)
                 {
-                    _userManager.AddToRolesAsync(Appuser,WebSite_Admin).GetAwaite().GetResult();
+                    _userManager.AddToRolesAsync(Appuser, WebSite_Admin).GetAwaite().GetResult();
                 }
             }
         }
